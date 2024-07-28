@@ -14,13 +14,13 @@ $screen_width = [int]$screen_resolution[0]
 $screen_height = [int]$screen_resolution[1]
 
 # Tap coordinates
-$tap_x = $screen_width - 100
+$tap_x = $screen_width - 50
 $tap_y = $screen_height / 2
 
 while ($true) {
     $formatted_page_number = $page_number.ToString("D4")
     adb exec-out screencap -p > "img/$formatted_page_number.png"
     adb shell input touchscreen tap $tap_x $tap_y
-    Start-Sleep -Seconds 0.25
+    Start-Sleep -Seconds 0.3
     $page_number++
 }
