@@ -8,13 +8,12 @@ if (-not (Test-Path "img")) {
 # Get Screen Resolution
 $screen_resolution = adb shell wm size
 $screen_resolution = $screen_resolution -replace "Physical size: ", ""
-$screen_resolution = $screen_resolution -replace "x", " "
-$screen_resolution = $screen_resolution -split " "
+$screen_resolution = $screen_resolution -split "x"
 $screen_width = [int]$screen_resolution[0]
 $screen_height = [int]$screen_resolution[1]
 
 # Tap coordinates
-$tap_x = $screen_width - 50
+$tap_x = $screen_width - 10
 $tap_y = $screen_height / 2
 
 while ($true) {
