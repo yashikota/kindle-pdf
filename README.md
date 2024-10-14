@@ -4,16 +4,14 @@
 
 Make sure you [enabled USB debugging](https://developer.android.com/studio/debug/dev-options#enable) on your device.  
 
-## Run
+## Capture the book
 
 ```sh
-./script.ps1
+./capture.ps1
 ```
 
-## Convert screenshot to pdf
-
-Use [ImageMagick](https://imagemagick.org).  
+## Convert screenshots to PDF
 
 ```sh
-magick convert img/*.png out.pdf
+./convert.ps1
 ```
