@@ -30,7 +30,7 @@ if (!(Test-Path -Path $sourceDir)) {
 }
 
 # Create a temporary directory for AVIF files
-$tempDir = Join-Path -Path $outputName -ChildPath "temp_avif"
+$tempDir = Join-Path -Path $outputName -ChildPath "images"
 New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
 
 try {
@@ -44,13 +44,9 @@ try {
 
     # Convert AVIF files to PDF
     Write-Host "Converting AVIF files to PDF..."
-    magick convert "$tempDir\*.avif" $pdfPath
+    magick convert -compress Zip "$tempDir\*.avif" $pdfPath
     Write-Host "Conversion complete. PDF saved as '$pdfPath'."
 } catch {
     Write-Host "Error: An issue occurred during conversion."
     Write-Host $_.Exception.Message
-} finally {
-    # Clean up temporary directory
-    Remove-Item -Path $tempDir -Recurse -Force
-    Write-Host "Temporary files deleted."
 }
